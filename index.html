@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMN Pro — Livre blanc | Communauté professionnelle CHR Côte Vermeille</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --navy: #1F3A5F;
+    --navy-light: #2C5282;
+    --accent: #D4A574;
+    --accent-light: #E5C28F;
+    --bg: #FAFAF7;
+    --text: #2D3748;
+    --text-light: #718096;
+    --border: #E2E8F0;
+    --white: #FFFFFF;
+    --success: #38A169;
+    --warning: #DD6B20;
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+  }
+  
+  /* SIDEBAR */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--navy);
+    color: white;
+    padding: 32px 24px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.08);
+  }
+  
+  .sidebar-logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  
+  .sidebar-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  
+  .nav-section {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.5);
+    margin: 20px 0 12px 0;
+  }
+  
+  .nav-link {
+    display: block;
+    padding: 10px 16px;
+    margin-bottom: 4px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+  
+  .nav-link:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+  }
+  
+  .nav-link.active {
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border-left-color: var(--accent);
+  }
+  
+  .print-btn {
+    margin-top: 32px;
+    padding: 12px 16px;
+    width: 100%;
+    background: var(--accent);
+    color: var(--navy);
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .print-btn:hover {
+    background: var(--accent-light);
+  }
+  
+  /* MAIN */
+  .main {
+    margin-left: 280px;
+    padding: 0;
+  }
+  
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: white;
+    padding: 100px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(212,165,116,0.2);
+    color: var(--accent);
+    border: 1px solid rgba(212,165,116,0.4);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+  }
+  
+  .hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 850px;
+  }
+  
+  .hero-subtitle {
+    font-size: 20px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 48px;
+    max-width: 750px;
+    line-height: 1.5;
+  }
+  
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    flex-wrap: wrap;
+  }
+  
+  /* KEY STATS */
+  .key-stats {
+    background: white;
+    padding: 60px 80px;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .key-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .stat-card {
+    padding: 32px 28px;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(31,58,95,0.08);
+    border-color: var(--navy);
+  }
+  
+  .stat-number {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  
+  .stat-label {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .stat-source {
+    font-size: 11px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* SECTIONS */
+  .section {
+    padding: 80px 80px;
+    max-width: 1100px;
+  }
+  
+  .section.alt {
+    background: white;
+    max-width: none;
+  }
+  
+  .section.alt > div {
+    max-width: 1100px;
+  }
+  
+  .section-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg);
+    color: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  
+  .section.alt .section-tag {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+  
+  .section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  
+  .section-lead {
+    font-size: 19px;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 800px;
+  }
+  
+  .section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 40px 0 16px 0;
+  }
+  
+  .section h4 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 24px 0 12px 0;
+  }
+  
+  .section p {
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  
+  .section ul, .section ol {
+    margin: 16px 0 24px 24px;
+  }
+  
+  .section li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+  
+  /* CALLOUT */
+  .callout {
+    margin: 32px 0;
+    padding: 24px 28px;
+    background: white;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  
+  .callout-navy {
+    border-left-color: var(--navy);
+    background: rgba(31,58,95,0.03);
+  }
+  
+  .callout-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  
+  .callout-navy .callout-title {
+    color: var(--navy);
+  }
+  
+  .callout p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  /* COLLAPSIBLE */
+  .collapsible {
+    margin: 16px 0;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .collapsible:hover {
+    border-color: var(--navy);
+  }
+  
+  .collapsible-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+  
+  .collapsible-header:hover {
+    background: var(--bg);
+  }
+  
+  .collapsible-title {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--navy);
+  }
+  
+  .collapsible-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    transition: transform 0.3s;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  
+  .collapsible.open .collapsible-icon {
+    transform: rotate(45deg);
+  }
+  
+  .collapsible-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+  }
+  
+  .collapsible.open .collapsible-body {
+    max-height: 2000px;
+  }
+  
+  .collapsible-content {
+    padding: 0 24px 24px 24px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  
+  /* TABLES */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 32px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 14px;
+  }
+  
+  thead {
+    background: var(--navy);
+    color: white;
+  }
+  
+  th {
+    padding: 16px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  
+  tbody tr:hover { background: var(--bg); }
+  tbody tr.highlight { background: rgba(212,165,116,0.08); }
+  tbody tr.highlight:hover { background: rgba(212,165,116,0.12); }
+  
+  /* PROGRESS */
+  .progress-section {
+    margin: 32px 0;
+    padding: 28px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  
+  .progress-item {
+    margin-bottom: 20px;
+  }
+  
+  .progress-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .progress-bar {
+    height: 10px;
+    background: var(--bg);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: 5px;
+    transition: width 1s ease-out;
+  }
+  
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    margin: 40px 0;
+    padding-left: 32px;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 32px;
+    padding-left: 24px;
+  }
+  
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -32px;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    background: var(--navy);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--navy);
+  }
+  
+  .timeline-item.active::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+  
+  .timeline-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  
+  .timeline-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  
+  .timeline-desc {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  
+  /* GRID CARDS */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+  }
+  
+  .grid-card {
+    padding: 24px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  
+  .grid-card:hover {
+    border-color: var(--navy);
+    box-shadow: 0 8px 24px rgba(31,58,95,0.06);
+  }
+  
+  .grid-card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  
+  .grid-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  
+  .grid-card-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .badge-success {
+    background: rgba(56,161,105,0.1);
+    color: var(--success);
+  }
+  
+  .badge-pending {
+    background: rgba(221,107,32,0.1);
+    color: var(--warning);
+  }
+  
+  .badge-navy {
+    background: rgba(31,58,95,0.1);
+    color: var(--navy);
+  }
+  
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: white;
+    padding: 60px 80px;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  footer h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: white;
+  }
+  
+  footer p, footer a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    line-height: 1.7;
+    font-size: 14px;
+  }
+  
+  footer a:hover {
+    color: var(--accent);
+  }
+  
+  footer ul {
+    list-style: none;
+  }
+  
+  footer li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+  }
+  
+  /* RESPONSIVE */
+  .menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 200;
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  @media (max-width: 1024px) {
+    .menu-toggle { display: block; }
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .hero, .key-stats, .section, footer { padding-left: 24px; padding-right: 24px; }
+    .hero h1 { font-size: 36px; }
+    .key-stats-grid { grid-template-columns: 1fr; }
+    .stat-number { font-size: 44px; }
+    .section h2 { font-size: 28px; }
+    .grid-cards { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  
+  /* PRINT */
+  @media print {
+    .sidebar, .menu-toggle, .print-btn { display: none; }
+    .main { margin-left: 0; }
+    .hero { padding: 40px; }
+    .section { padding: 40px; page-break-inside: avoid; }
+    .collapsible-body { max-height: none !important; }
+    .collapsible { page-break-inside: avoid; }
+    .stat-card:hover, .grid-card:hover { transform: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+<!-- SIDEBAR -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-logo">DMN Pro</div>
+  <div class="sidebar-tagline">Livre blanc · Mai 2026</div>
+  
+  <div class="nav-section">Aperçu</div>
+  <a href="#hero" class="nav-link active">Vue d'ensemble</a>
+  <a href="#summary" class="nav-link">Executive summary</a>
+  
+  <div class="nav-section">Le projet</div>
+  <a href="#marche" class="nav-link">1. Étude de marché</a>
+  <a href="#contexte" class="nav-link">2. Contexte économique</a>
+  <a href="#bmc" class="nav-link">3. Modèle économique</a>
+  <a href="#benchmark" class="nav-link">4. Benchmark concurrentiel</a>
+  
+  <div class="nav-section">Stratégie</div>
+  <a href="#segmentation" class="nav-link">5. Segmentation</a>
+  <a href="#animation" class="nav-link">6. Animation communauté</a>
+  <a href="#partenaires" class="nav-link">7. Partenariats</a>
+  <a href="#scale" class="nav-link">8. Stratégie de scale</a>
+  
+  <div class="nav-section">Exécution</div>
+  <a href="#roadmap" class="nav-link">9. Roadmap</a>
+  <a href="#contact" class="nav-link">Contact & sources</a>
+  
+  <button class="print-btn" onclick="window.print()">📄 Imprimer en PDF</button>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+  
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-badge">LIVRE BLANC · VERSION 1.0 · MAI 2026</div>
+    <h1>DMN Pro : la communauté professionnelle CHR de la Côte Vermeille</h1>
+    <p class="hero-subtitle">Carte d'avantages entre confrères, communauté pro vérifiée, et canal de recrutement qualifié pour répondre à la crise de fidélisation des équipes dans l'hôtellerie-restauration des Pyrénées-Orientales.</p>
+    
+    <div class="hero-meta">
+      <div>📅 Mai 2026</div>
+      <div>📍 Côte Vermeille · Pyrénées-Orientales</div>
+      <div>🏛️ Association Dessine Ma Nuit · Loi 1901 · Port-Vendres</div>
+    </div>
+  </section>
+  
+  <!-- KEY STATS -->
+  <section class="key-stats">
+    <div class="key-stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">65%</div>
+        <div class="stat-label">des salariés CHR quittent leur poste dans les 2 premières années</div>
+        <div class="stat-source">UMIH France · INSEE 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">200K</div>
+        <div class="stat-label">postes vacants dans l'hôtellerie-restauration française en 2025</div>
+        <div class="stat-source">France Travail · UMIH 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">30K</div>
+        <div class="stat-label">saisonniers CHR par été dans les Pyrénées-Orientales</div>
+        <div class="stat-source">UMIH 66 · MTS 66</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- EXECUTIVE SUMMARY -->
+  <section class="section" id="summary">
+    <div class="section-tag">Synthèse</div>
+    <h2>Executive Summary</h2>
+    <p class="section-lead">DMN Pro répond à la crise structurelle de fidélisation des équipes dans le CHR de la Côte Vermeille par une approche communautaire, qualifiée et scalable.</p>
+    
+    <h3>Le constat</h3>
+    <p>Le secteur hôtellerie-restauration des Pyrénées-Orientales connaît une crise sans précédent. Sur les 30 000 saisonniers qui rejoignent la côte chaque été, 65 % auront quitté leur employeur dans les 24 mois. Les patrons CHR cumulent les difficultés de recrutement, de fidélisation, et de logement saisonnier dans un contexte de 200 000 postes vacants au niveau national.</p>
+    
+    <p>Cette situation n'est pas conjoncturelle. Elle reflète une rupture profonde entre les attentes des nouvelles générations de professionnels et les conditions de travail historiques du secteur. Aucune solution structurante n'existe à ce jour à l'échelle locale.</p>
+    
+    <div class="callout">
+      <div class="callout-title">Insight clé</div>
+      <p>Le vrai problème n'est pas le recrutement, c'est la rétention. Les saisonniers ne reviennent pas, les permanents ne restent pas. Une communauté pro structurée et valorisante est la réponse la plus efficace.</p>
+    </div>
+    
+    <h3>La proposition de valeur</h3>
+    <p>DMN Pro est une application communautaire qui réunit les professionnels CHR de la Côte Vermeille autour de trois leviers complémentaires :</p>
+    
+    <div class="collapsible open" onclick="toggleCollapse(this, event)">
+      <div class="collapsible-header">
+        <div class="collapsible-title">1. Une carte d'avantages entre confrères du métier</div>
+        <div class="collapsible-icon">+</div>
+      </div>
+      <div class="collapsible-body">
+        <div class="collapsible-content">
+          Les pros vérifiés du secteur bénéficient d'avantages dans les établissements partenaires : verre offert, plat à prix réduit, tapas, dégustations. La valeur perçue mensuelle dépasse facilement 50 € par utilisateur actif. Le coût pour le partenaire est limité par des règles strictes : 1 activation par jour, 30 par mois maximum.
+        </div>
+      </div>
+    </div>
+    
+    <div class="collapsible" onclick="toggleCollapse(this, event)">
+      <div class="collapsible-header">
+        <div class="collapsible-title">2. Une communauté pro vérifiée et qualifiée</div>
+        <div class="collapsible-icon">+</div>
+      </div>
+      <div class="collapsible-body">
+        <div class="collapsible-content">
+          Inscription contrôlée manuellement, validation par établissement employeur, photo et identité visibles : la communauté est exclusivement composée de pros du métier. Cela crée un véritable club professionnel local, distinct des plateformes généralistes comme Swile ou Brigad.
+        </div>
+      </div>
+    </div>
+    
+    <div class="collapsible" onclick="toggleCollapse(this, event)">
+      <div class="collapsible-header">
+        <div class="collapsible-title">3. Un canal de recrutement qualifié (V3, 2027)</div>
+        <div class="collapsible-icon">+</div>
+      </div>
+      <div class="collapsible-body">
+        <div class="collapsible-content">
+          À partir de la V3, les patrons partenaires accèdent à un module de recrutement SaaS permettant de publier leurs offres directement auprès du vivier vérifié de DMN Pro. Le modèle économique cible 30 à 50 € par offre publiée ou 50 à 100 € par mois en abonnement. C'est le vrai modèle économique du projet à terme.
+        </div>
+      </div>
+    </div>
+    
+    <h3>Statut actuel</h3>
+    
+    <div class="progress-section">
+      <div class="progress-item">
+        <div class="progress-header">
+          <span>Documents stratégiques de référence</span>
+          <span style="color: var(--text-light)">9 / 9 ✓</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span>Stack technique V1 (Next.js + Supabase + Vercel)</span>
+          <span style="color: var(--text-light)">85%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span>Partenaires fondateurs signés</span>
+          <span style="color: var(--text-light)">1 / 15 (cible)</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 7%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-header">
+          <span>Lancement V1 (été 2026)</span>
+          <span style="color: var(--text-light)">T-8 semaines</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+      </div>
+    </div>
+    
+    <div class="callout callout-navy">
+      <div class="callout-title">Premier partenaire fondateur signé</div>
+      <p><strong>Maison Felipe SOARES BRANDÃO</strong> — 4 établissements à Collioure (Les Templiers, La Boqueria, L'Aquarelle, Rôtisserie Rue Pasteur) — premier partenaire fondateur signé en mai 2026. L'élargissement se poursuit cette semaine vers d'autres mini-groupes locaux (groupe Franck et Florence FULLIQUET, caviste Vin d'Auteur).</p>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 1 - ÉTUDE DE MARCHÉ -->
+  <section class="section alt" id="marche">
+    <div>
+      <div class="section-tag">Chapitre 1</div>
+      <h2>Étude de marché</h2>
+      <p class="section-lead">Analyse du marché des applications professionnelles pour le CHR sur la Côte Vermeille et au-delà.</p>
+      
+      <h3>Le bassin d'utilisateurs</h3>
+      <p>Le secteur CHR français représente plus de 1 million d'emplois directs (UMIH, 2024). En période estivale, les Pyrénées-Orientales accueillent 25 000 à 30 000 saisonniers CHR, dont environ 5 000 sur la seule Côte Vermeille (Collioure, Banyuls, Port-Vendres, Argelès, Cerbère). À l'année, les établissements permanents emploient 800 à 1 500 personnes sur la zone élargie incluant Perpignan.</p>
+      
+      <h3>L'absence de solution structurante</h3>
+      <p>Plusieurs plateformes existent dans le secteur, mais aucune ne répond spécifiquement au besoin identifié pour la Côte Vermeille :</p>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Solution existante</th>
+              <th>Cible</th>
+              <th>Limite pour DMN Pro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Swile / Edenred</strong></td>
+              <td>Tous secteurs, entreprises</td>
+              <td>Pas spécialisé CHR, pas de communauté</td>
+            </tr>
+            <tr>
+              <td><strong>Brigad</strong></td>
+              <td>Mission ponctuelle CHR</td>
+              <td>Pas d'animation communautaire, pas d'ancrage local</td>
+            </tr>
+            <tr>
+              <td><strong>The Fork Pro</strong></td>
+              <td>Patrons restaurateurs</td>
+              <td>Pas pour les salariés, pas communautaire</td>
+            </tr>
+            <tr>
+              <td><strong>Industry Card (Sheffield, UK)</strong></td>
+              <td>Pros CHR locaux</td>
+              <td>Modèle inspirant mais non disponible en France</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="callout">
+        <div class="callout-title">Opportunité de marché</div>
+        <p>Aucune plateforme française ne couvre actuellement la combinaison « communauté pro CHR + perks géolocalisés + ancrage territorial fort ». DMN Pro est first-mover sur ce positionnement précis.</p>
+      </div>
+      
+      <h3>Le potentiel d'adoption</h3>
+      <p>L'ARCEP confirme une saturation côté équipement : 96 % des 25-39 ans et 93 % des 18-24 ans possèdent un smartphone en France (2023). L'enjeu n'est donc pas technologique mais comportemental : créer un réflexe d'usage régulier dans une population mobile et changeante.</p>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 2 - CONTEXTE ÉCONOMIQUE -->
+  <section class="section" id="contexte">
+    <div class="section-tag">Chapitre 2</div>
+    <h2>Contexte économique 2026</h2>
+    <p class="section-lead">Le climat actuel du secteur CHR justifie l'urgence d'une solution structurante.</p>
+    
+    <h3>Une crise de recrutement chronique</h3>
+    <p>62 % des recrutements non saisonniers dans le secteur CHR sont jugés difficiles en 2024 (DARES). Le secteur cumule 200 000 postes vacants en France en 2025, soit le double du niveau pré-Covid. Les conséquences sont structurelles : services réduits, fermetures hebdomadaires, qualité d'accueil dégradée.</p>
+    
+    <h3>Une fidélisation impossible</h3>
+    <p>65 % des salariés CHR quittent leur emploi dans les 24 premiers mois. Sur la Côte Vermeille, ce chiffre est aggravé par le caractère saisonnier de la zone : la majorité des saisonniers ne reviennent pas la saison suivante.</p>
+    
+    <h3>Un alternance en hausse</h3>
+    <p>+ 18 % d'alternants dans le secteur en 2024 (Constructys). Signal positif : les jeunes restent intéressés par les métiers du CHR malgré la dégradation des conditions. C'est sur cette génération qu'il faut bâtir.</p>
+    
+    <div class="callout callout-navy">
+      <div class="callout-title">Triple contrainte économique</div>
+      <p>Patrons CHR confrontés à : (1) inflation des charges (énergie + 30 % depuis 2022), (2) inflation des matières premières alimentaires, (3) tension salariale forte pour retenir les équipes. Toute solution qui réduit le coût de fidélisation des équipes est une opportunité immédiate.</p>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 3 - BMC -->
+  <section class="section alt" id="bmc">
+    <div>
+      <div class="section-tag">Chapitre 3</div>
+      <h2>Modèle économique (BMC v3)</h2>
+      <p class="section-lead">Trois phases d'évolution du modèle économique, alignées sur la trajectoire de croissance.</p>
+      
+      <div class="grid-cards">
+        <div class="grid-card">
+          <div class="grid-card-icon">🎁</div>
+          <div class="grid-card-title">V1 — Perks (été 2026)</div>
+          <div class="grid-card-desc">Application gratuite. Carte d'avantages entre confrères. Financement par subventions et sponsoring marques locales. Pas de monétisation directe.</div>
+        </div>
+        <div class="grid-card">
+          <div class="grid-card-icon">🏠</div>
+          <div class="grid-card-title">V2 — Logement / Mobilité (hiver 2026-2027)</div>
+          <div class="grid-card-desc">Ajout d'un module logement saisonnier ou mobilité, selon retours utilisateurs V1. Possible partenariat Action Logement. Premier revenu de monétisation possible (commission, abonnement).</div>
+        </div>
+        <div class="grid-card">
+          <div class="grid-card-icon">💼</div>
+          <div class="grid-card-title">V3 — SaaS Recrutement (2027)</div>
+          <div class="grid-card-desc">Module B2B pour les patrons : publication d'offres d'emploi auprès du vivier qualifié. Tarif cible 30-50 €/offre ou 50-100 €/mois en abonnement. Vrai modèle économique du projet.</div>
+        </div>
+        <div class="grid-card">
+          <div class="grid-card-icon">🎓</div>
+          <div class="grid-card-title">V4 — Formation / Événements (2028)</div>
+          <div class="grid-card-desc">Contenus payants, événements pros (sommellerie, HACCP), accords mets-vins. Marge sur l'organisation. Renforce la dimension communautaire.</div>
+        </div>
+      </div>
+      
+      <h3>Trajectoire financière prévisionnelle</h3>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Période</th>
+              <th>Revenus</th>
+              <th>Coûts infra</th>
+              <th>Modèle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>An 1 (2026-27)</strong></td>
+              <td>0 € + subventions 5-30 k€ + sponsoring 3-5 k€</td>
+              <td>200-600 €</td>
+              <td>Pré-revenue, financement subventions</td>
+            </tr>
+            <tr>
+              <td><strong>An 2 (2027-28)</strong></td>
+              <td>5-30 k€ SaaS + 5-15 k€ sponsoring + 10-40 k€ subventions</td>
+              <td>800-2 500 €</td>
+              <td>Break-even possible avec traction V3</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>An 3 (2028-29)</strong></td>
+              <td>30-80 k€ SaaS + 20-50 k€ autres revenus</td>
+              <td>2 000-8 000 €</td>
+              <td>Entreprise rentable, salaires premier(s) emploi(s)</td>
+            </tr>
+            <tr>
+              <td><strong>An 5+ (2030+)</strong></td>
+              <td>200 k€ à 1 M€ combinés</td>
+              <td>Variable</td>
+              <td>Entreprise stabilisée, équipe 3-10 personnes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 4 - BENCHMARK -->
+  <section class="section" id="benchmark">
+    <div class="section-tag">Chapitre 4</div>
+    <h2>Benchmark concurrentiel</h2>
+    <p class="section-lead">Analyse des solutions existantes et positionnement différenciant de DMN Pro.</p>
+    
+    <h3>Positionnement DMN Pro vs concurrents</h3>
+    
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Critère</th>
+            <th>Swile / Edenred</th>
+            <th>Brigad</th>
+            <th class="badge-navy">DMN Pro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spécialisation CHR</td>
+            <td>❌ Multi-secteurs</td>
+            <td>✓ CHR</td>
+            <td>✓ CHR exclusif</td>
+          </tr>
+          <tr>
+            <td>Ancrage territorial</td>
+            <td>❌ National</td>
+            <td>❌ National</td>
+            <td>✓ Côte Vermeille</td>
+          </tr>
+          <tr>
+            <td>Communauté pro vérifiée</td>
+            <td>❌</td>
+            <td>Partielle</td>
+            <td>✓ Manuelle</td>
+          </tr>
+          <tr>
+            <td>Perks entre confrères</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>✓ Cœur du modèle</td>
+          </tr>
+          <tr>
+            <td>Recrutement local qualifié</td>
+            <td>❌</td>
+            <td>✓ Mission ponctuelle</td>
+            <td>✓ Communauté permanente</td>
+          </tr>
+          <tr>
+            <td>Animation éditoriale</td>
+            <td>Newsletter générique</td>
+            <td>❌</td>
+            <td>✓ Sectorielle + locale</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3>Cas d'inspiration internationale</h3>
+    <p>Le modèle <strong>Industry Card</strong> à Sheffield (UK) démontre la viabilité du concept : carte d'avantages entre pros hospitality locaux, plus de 200 partenaires en 3 ans. Modèle reproductible mais inexistant en France.</p>
+  </section>
+  
+  <!-- CHAPITRE 5 - SEGMENTATION -->
+  <section class="section alt" id="segmentation">
+    <div>
+      <div class="section-tag">Chapitre 5</div>
+      <h2>Segmentation utilisateurs</h2>
+      <p class="section-lead">Cinq segments d'utilisateurs cibles, identifiés par profil, volume et stratégie d'acquisition prioritaire.</p>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>Volume CV</th>
+              <th>Cible an 1</th>
+              <th>Acquisition prioritaire</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Saisonniers jeunes (18-25)</strong></td>
+              <td>2 000 - 2 500</td>
+              <td>200 - 300</td>
+              <td>QR sur lieu de travail, MTS 66, Campus</td>
+            </tr>
+            <tr>
+              <td><strong>2. Saisonniers expérimentés (26-35)</strong></td>
+              <td>1 500 - 1 750</td>
+              <td>80 - 120</td>
+              <td>Parrainage senior, UMIH 66, stickers</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>3. Permanents jeunes (22-32) ★</strong></td>
+              <td>800 - 1 200</td>
+              <td>100 - 150</td>
+              <td>Cœur de cible — réseau direct (Cercle 1)</td>
+            </tr>
+            <tr>
+              <td><strong>4. Permanents expérimentés (33-50)</strong></td>
+              <td>500 - 800</td>
+              <td>50 - 80</td>
+              <td>Patrons partenaires, institutions, équipes</td>
+            </tr>
+            <tr>
+              <td><strong>5. Patrons (B2B)</strong></td>
+              <td>100 - 150</td>
+              <td>25 signés</td>
+              <td>Pitch direct, mentions institutionnelles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="callout">
+        <div class="callout-title">★ Cœur de cible</div>
+        <p>Le segment Permanents jeunes (22-32 ans) constitue le cœur de cible naturel : peu nombreux mais ultra-engagés, ils correspondent au réseau personnel direct du fondateur et constituent le Cercle 1 du parrainage à activer dès le lancement V1.</p>
+      </div>
+      
+      <h3>Stratégie de pénétration par phase</h3>
+      <p>La séquence d'acquisition enchaîne les segments dans un ordre qui maximise les effets de réseau :</p>
+      
+      <ol>
+        <li><strong>Phase Lancement (juillet-août 2026)</strong> : Segment 3 d'abord (20-30 inscriptions à la main), puis Segment 1 via QR sur lieu de travail, puis Segment 2 par parrainage organique.</li>
+        <li><strong>Phase Consolidation (septembre-octobre 2026)</strong> : Élargissement Segments 1 et 2 via canaux institutionnels, premier afflux Segment 4 via parrainage.</li>
+        <li><strong>Phase Profondeur (hiver 2026-2027)</strong> : Maintien de l'engagement par animation éditoriale, recrutement Segment 4 par effet de prestige.</li>
+        <li><strong>Phase Monétisation (V3, 2027)</strong> : Activation Segment 5 (patrons) pour le SaaS recrutement.</li>
+      </ol>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 6 - ANIMATION -->
+  <section class="section" id="animation">
+    <div class="section-tag">Chapitre 6</div>
+    <h2>Animation communauté</h2>
+    <p class="section-lead">Stratégie de contenu et calendrier éditorial pour maintenir l'engagement entre 2 activations de perks.</p>
+    
+    <h3>Cadence éditoriale type</h3>
+    
+    <div class="grid-cards">
+      <div class="grid-card">
+        <div class="grid-card-icon">📰</div>
+        <div class="grid-card-title">Fil d'actualité — 2x/semaine</div>
+        <div class="grid-card-desc">Lundi et jeudi matin. Actualités sectorielles régionales, mouvements pros, ouvertures/fermetures d'établissements, news perks débloqués.</div>
+      </div>
+      <div class="grid-card">
+        <div class="grid-card-icon">📚</div>
+        <div class="grid-card-title">Fiches métier — toutes les 2 semaines</div>
+        <div class="grid-card-desc">Contenus pratiques evergreen : vocabulaire pro, vins du Roussillon, HACCP, accords mets-vins, droit du travail saisonnier.</div>
+      </div>
+      <div class="grid-card">
+        <div class="grid-card-icon">📧</div>
+        <div class="grid-card-title">Newsletter mensuelle</div>
+        <div class="grid-card-desc">Récap mensuel envoyé même aux saisonniers partis hors saison. Réactivation préventive pour préparer le retour la saison suivante.</div>
+      </div>
+      <div class="grid-card">
+        <div class="grid-card-icon">🎉</div>
+        <div class="grid-card-title">Événements signature</div>
+        <div class="grid-card-desc">Dégustations vigneronnes, masterclass sommellerie, accord mets-vins. 2-4 par an, partenariat domaines locaux. V2 et au-delà.</div>
+      </div>
+    </div>
+    
+    <h3>Contenu par segment</h3>
+    <p>Le contenu éditorial est calibré par segment cible :</p>
+    
+    <ul>
+      <li><strong>Saisonniers jeunes</strong> : posts visuels Instagram/TikTok, droits saisonniers, vocabulaire pro</li>
+      <li><strong>Saisonniers expérimentés</strong> : portraits qualitatifs, formations locales (WSET, HACCP)</li>
+      <li><strong>Permanents jeunes</strong> : recommandations établissements jours off, événements à ne pas manquer</li>
+      <li><strong>Permanents expérimentés</strong> : veille sectorielle, portraits de pairs, contenus exclusifs</li>
+      <li><strong>Patrons</strong> : rapport mensuel personnalisé, bonnes pratiques anonymisées, actualités juridiques</li>
+    </ul>
+  </section>
+  
+  <!-- CHAPITRE 7 - PARTENAIRES -->
+  <section class="section alt" id="partenaires">
+    <div>
+      <div class="section-tag">Chapitre 7</div>
+      <h2>Partenariats institutionnels</h2>
+      <p class="section-lead">Stratégie d'ancrage institutionnel pour crédibilité, accès aux dispositifs publics et soutien financier.</p>
+      
+      <h3>Quatre catégories de partenaires</h3>
+      
+      <div class="collapsible" onclick="toggleCollapse(this, event)">
+        <div class="collapsible-header">
+          <div class="collapsible-title">1. Collectivités territoriales</div>
+          <div class="collapsible-icon">+</div>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            Mairies (Port-Vendres, Collioure, Banyuls, Argelès), Communauté de communes Albères Côte Vermeille Illibéris (CC ACVI), Conseil départemental 66, Région Occitanie. Soutien moral, communication conjointe, possible cofinancement V2-V3.
+          </div>
+        </div>
+      </div>
+      
+      <div class="collapsible" onclick="toggleCollapse(this, event)">
+        <div class="collapsible-header">
+          <div class="collapsible-title">2. Syndicats et fédérations professionnelles</div>
+          <div class="collapsible-icon">+</div>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            UMIH 66 (Brice Sannac, président), CCI Pyrénées-Orientales, Chambre des Métiers. Reconnaissance sectorielle, accès au vivier des employeurs, intégration dans les communications professionnelles.
+          </div>
+        </div>
+      </div>
+      
+      <div class="collapsible" onclick="toggleCollapse(this, event)">
+        <div class="collapsible-header">
+          <div class="collapsible-title">3. Maisons des saisonniers et services emploi</div>
+          <div class="collapsible-icon">+</div>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            Maison des Travailleurs Saisonniers 66 (MTS 66), France Travail, missions locales. Distribution physique lors des permanences mobiles, événements rentrée saisonnière, articles dans leurs newsletters.
+          </div>
+        </div>
+      </div>
+      
+      <div class="collapsible" onclick="toggleCollapse(this, event)">
+        <div class="collapsible-header">
+          <div class="collapsible-title">4. Écoles et centres de formation</div>
+          <div class="collapsible-icon">+</div>
+        </div>
+        <div class="collapsible-body">
+          <div class="collapsible-content">
+            Campus Banyuls, Purple Campus Perpignan, écoles hôtelières régionales. Recrutement des alternants et étudiants en filière CHR, premiers utilisateurs jeunes engagés.
+          </div>
+        </div>
+      </div>
+      
+      <h3>Premiers partenaires fondateurs signés</h3>
+      
+      <div class="callout callout-navy">
+        <div class="callout-title">Statut acquisition partenaires fondateurs</div>
+        <p><span class="badge badge-success">✓ Signé</span> <strong>Maison Felipe SOARES BRANDÃO</strong> — 4 établissements à Collioure (Les Templiers, La Boqueria, L'Aquarelle, Rôtisserie Rue Pasteur)</p>
+        <p style="margin-top: 12px;"><span class="badge badge-pending">En cours</span> Groupe Franck et Florence FULLIQUET (Les 3 F) — Casa Catalane, Jardin de Collioure, Jardin de Canet, Côte à l'Os, Café Sola</p>
+        <p style="margin-top: 12px;"><span class="badge badge-pending">En cours</span> Caviste Vin d'Auteur Collioure — patron unique, relation pré-existante</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 8 - SCALE -->
+  <section class="section" id="scale">
+    <div class="section-tag">Chapitre 8</div>
+    <h2>Stratégie de scale</h2>
+    <p class="section-lead">Architecture et trajectoire pour absorber la croissance sans refonte technique majeure.</p>
+    
+    <h3>Les quatre phases de scale</h3>
+    
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Utilisateurs</th>
+            <th>Infrastructure</th>
+            <th>Coût mensuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Lancement</strong></td>
+            <td>0 - 500</td>
+            <td>Vercel Free + Supabase Free</td>
+            <td>0 €</td>
+          </tr>
+          <tr>
+            <td><strong>2. Traction</strong></td>
+            <td>500 - 5 000</td>
+            <td>Vercel Pro + Supabase Pro + Analytics</td>
+            <td>45 - 70 €</td>
+          </tr>
+          <tr>
+            <td><strong>3. Scale moyen</strong></td>
+            <td>5 000 - 50 000</td>
+            <td>+ CDN images, monitoring, email volume</td>
+            <td>80 - 200 €</td>
+          </tr>
+          <tr>
+            <td><strong>4. Grand scale</strong></td>
+            <td>50 000+</td>
+            <td>Architecture évoluée + équipe</td>
+            <td>500 - 3 000 €</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3>Cinq décisions architecturales en V1</h3>
+    <p>Pour faciliter le scale futur sans refonte coûteuse, cinq décisions sont intégrées dès la V1 :</p>
+    
+    <ol>
+      <li><strong>Tracking analytics dès le jour 1</strong> (Plausible ou PostHog) pour piloter data-driven dès le lancement</li>
+      <li><strong>Versioning de la base de données</strong> via migrations Supabase versionnées</li>
+      <li><strong>Architecture multi-tenant</strong> (champ region) pour faciliter extension géographique V2-V3</li>
+      <li><strong>Row Level Security</strong> activée dès le jour 1 sur toutes les tables</li>
+      <li><strong>Tests automatisés</strong> sur les fonctions critiques (activation perk, parrainage)</li>
+    </ol>
+    
+    <div class="callout">
+      <div class="callout-title">Principe fondateur</div>
+      <p>Scaler une plateforme web bien conçue ne demande pas une machine surpuissante côté fondateur. L'application tourne sur des serveurs cloud (Vercel, Supabase) qui absorbent automatiquement la charge. La machine du fondateur sert uniquement à piloter le projet.</p>
+    </div>
+  </section>
+  
+  <!-- CHAPITRE 9 - ROADMAP -->
+  <section class="section alt" id="roadmap">
+    <div>
+      <div class="section-tag">Chapitre 9</div>
+      <h2>Roadmap et exécution</h2>
+      <p class="section-lead">Trajectoire opérationnelle sur 3 ans, de la V1 perks à l'entreprise stabilisée.</p>
+      
+      <div class="timeline">
+        <div class="timeline-item active">
+          <div class="timeline-date">Mai 2026 — En cours</div>
+          <div class="timeline-title">Acquisition partenaires fondateurs</div>
+          <div class="timeline-desc">Signature des 10-15 premiers patrons CHR partenaires fondateurs. Premier signé : Maison Felipe SOARES BRANDÃO (4 établissements Collioure). En cours : groupe Franck & Florence FULLIQUET, Vin d'Auteur Collioure.</div>
+        </div>
+        
+        <div class="timeline-item active">
+          <div class="timeline-date">Mai - Juin 2026</div>
+          <div class="timeline-title">Construction V1 technique</div>
+          <div class="timeline-desc">Stack Next.js + Supabase + Vercel. 10 modules : inscription pro, validation manuelle, liste géolocalisée perks, activation perks, espace patron, dashboard admin, PWA, animation, sécurité, tests.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">Juillet 2026</div>
+          <div class="timeline-title">Lancement V1 publique</div>
+          <div class="timeline-desc">Ouverture aux pros vérifiés Côte Vermeille. Objectif fin août : 150-200 inscriptions, 15 partenaires actifs avec 20+ perks.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">Septembre - Octobre 2026</div>
+          <div class="timeline-title">Consolidation et institutions</div>
+          <div class="timeline-desc">Élargissement via mentions institutionnelles (mairies, CC ACVI, UMIH 66, MTS 66). Premier dossier subvention Région Occitanie pour V2.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">Hiver 2026 - 2027</div>
+          <div class="timeline-title">V2 — Logement ou mobilité</div>
+          <div class="timeline-desc">Choix tranché après retours utilisateurs V1. Module additionnel pour maintenir l'engagement hors saison. Cible : 350-500 inscriptions actives.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">Été - Automne 2027</div>
+          <div class="timeline-title">V3 — SaaS Recrutement</div>
+          <div class="timeline-desc">Modèle économique principal. Module B2B payant pour patrons : publication d'offres au vivier qualifié. Cible 30 employeurs payants à fin 2027.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2028</div>
+          <div class="timeline-title">Extension géographique</div>
+          <div class="timeline-desc">V4. Élargissement Perpignan + arrière-pays, puis Montpellier-Béziers. Multi-tenant architecture activée. Premier salarié potentiel.</div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-date">2029+</div>
+          <div class="timeline-title">Stabilisation et équipe</div>
+          <div class="timeline-desc">Régionalisation Occitanie complète. Équipe 3-10 personnes. Transformation juridique SAS commerciale en parallèle de l'association DMN. Modèle reproductible vers autres régions touristiques.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT & SOURCES -->
+  <section class="section" id="contact">
+    <div class="section-tag">Annexes</div>
+    <h2>Contact et sources</h2>
+    
+    <h3>Contact projet</h3>
+    <p><strong>Association Dessine Ma Nuit (DMN)</strong><br>
+    Association régie par la loi du 1<sup>er</sup> juillet 1901<br>
+    Siège social : Port-Vendres (66660)<br>
+    Représentant légal : Axel</p>
+    
+    <h3>Conseil et accompagnement</h3>
+    <ul>
+      <li><strong>Mentor Buy & Build</strong> : Alexandre Barthélémy (Mastermind Buy & Build)</li>
+      <li><strong>Conseil gastronomique senior</strong> : René Marre, expert gastronomique 40 ans d'expérience (advisor informel)</li>
+    </ul>
+    
+    <h3>Sources documentaires principales</h3>
+    <ul>
+      <li>UMIH France · Rapport annuel 2024-2025</li>
+      <li>INSEE · Statistiques sectorielles CHR 2024</li>
+      <li>France Travail · Postes vacants HCR 2025</li>
+      <li>ARCEP · Diagnostic numérique des Français 2023</li>
+      <li>DARES · Recrutements difficiles 2023-2024</li>
+      <li>UMIH 66 et MTS 66 · Saisonniers Pyrénées-Orientales</li>
+      <li>Pappers, BODACC · Données d'entreprises locales</li>
+      <li>Constructys · Alternance HCR 2024</li>
+    </ul>
+    
+    <h3>Documents stratégiques disponibles sur demande</h3>
+    <ol>
+      <li>Étude de marché DMN Pro (Côte Vermeille CHR)</li>
+      <li>Étude contexte économique 2026</li>
+      <li>BMC v3 et Specs V1 DMN Perks</li>
+      <li>Benchmark concurrentiel et UX</li>
+      <li>Stratégie animation et roadmap éditoriale</li>
+      <li>Partenariats institutionnels v2</li>
+      <li>Fiche acquisition 2 pages</li>
+      <li>Segmentation utilisateurs DMN Pro</li>
+      <li>Stratégie de scale et infrastructure</li>
+    </ol>
+  </section>
+  
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>DMN Pro</h4>
+      <p>La communauté professionnelle CHR de la Côte Vermeille.<br>
+      Association Dessine Ma Nuit · Loi 1901 · Port-Vendres.</p>
+    </div>
+    <div>
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#summary">Executive summary</a></li>
+        <li><a href="#marche">Étude de marché</a></li>
+        <li><a href="#bmc">Modèle économique</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Port-Vendres (66660)</li>
+        <li>Association loi 1901</li>
+        <li>Premier partenaire fondateur :<br>Maison Felipe SOARES BRANDÃO</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Livre blanc DMN Pro · Version 1.0 · Mai 2026 · Document interne pour usage stratégique
+  </div>
+</footer>
+
+<script>
+  function toggleCollapse(element, event) {
+    if (event) event.stopPropagation();
+    element.classList.toggle('open');
+  }
+  
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+  }
+  
+  const sections = document.querySelectorAll('.section, .hero');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.scrollY >= sectionTop) {
+        current = section.id;
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+  
+  // Close sidebar on link click (mobile)
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 1024) {
+        document.getElementById('sidebar').classList.remove('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
