@@ -1,3 +1,3 @@
 # Livre blanc DMN Pro
 
-Voir [le livre blanc en ligne](URL_VERCEL_À_VENIR).
+Voir [le livre blanc en ligne](https://axelfall-del.github.io/dmn-pro-livre-blanc/).
