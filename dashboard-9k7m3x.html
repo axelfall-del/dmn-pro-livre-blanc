@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard DMN Pro</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --navy: #1F3A5F;
+    --navy-light: #2E5085;
+    --slate-deep: #1E293B;
+  }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .navy-bg { background-color: var(--navy); }
+  .navy-text { color: var(--navy); }
+  .navy-border { border-color: var(--navy); }
+  .gauge-track { background-color: #E2E8F0; }
+  .gauge-fill { background-color: var(--navy); }
+  .gauge-empty .gauge-fill { background-color: #CBD5E1; }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] > summary .chevron { transform: rotate(90deg); }
+  .chevron { transition: transform 0.15s ease; }
+  code.path { font-family: 'Consolas', 'Monaco', monospace; font-size: 0.78rem; word-break: break-all; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<!-- HEADER -->
+<header class="navy-bg text-white">
+  <div class="max-w-7xl mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight">DMN Pro — Dashboard</h1>
+        <p class="text-slate-200 text-sm mt-1">Application communautaire pros CHR — Côte Vermeille</p>
+      </div>
+      <div class="text-right">
+        <div class="inline-flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-md text-sm font-medium">
+          <span class="w-2 h-2 rounded-full bg-green-400"></span>
+          1er partenaire fondateur SIGNÉ · 4 établissements Collioure
+        </div>
+        <p class="text-slate-300 text-xs mt-2">Lancement V1 visé fin juillet 2026 (modulable ±3 sem) · Généré le 19 mai 2026</p>
+        <p class="text-slate-300 text-xs mt-1"><span class="font-semibold text-slate-200">Ressources publiques :</span> <a href="https://axelfall-del.github.io/dmn-pro-livre-blanc/" class="underline hover:text-white" target="_blank" rel="noopener">Livre blanc DMN Pro ↗</a></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+
+<!-- A. JOURNAL DE BORD -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Journal de bord — mardi 19 mai 2026</h2>
+  <div class="bg-slate-100 border border-slate-200 rounded-lg p-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div>
+        <h3 class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-3 flex items-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+          Fait aujourd'hui
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li class="flex gap-2"><span class="text-green-600 mt-0.5 shrink-0">✓</span><span><strong>Felipe SOARES BRANDÃO signé en principe</strong> — 4 établissements à Collioure (procédure B en cours).</span></li>
+          <li class="flex gap-2"><span class="text-green-600 mt-0.5 shrink-0">✓</span><span>WhatsApp Felipe — message de remerciement envoyé.</span></li>
+          <li class="flex gap-2"><span class="text-green-600 mt-0.5 shrink-0">✓</span><span>Livre blanc DMN Pro publié sur GitHub Pages : <a href="https://axelfall-del.github.io/dmn-pro-livre-blanc/" target="_blank" rel="noopener" class="underline text-slate-800 hover:text-slate-900">axelfall-del.github.io/dmn-pro-livre-blanc ↗</a></span></li>
+          <li class="flex gap-2"><span class="text-green-600 mt-0.5 shrink-0">✓</span><span>Plan 10 jours intégré en mémoire — 4 fronts, 8 chantiers actifs.</span></li>
+          <li class="flex gap-2"><span class="text-green-600 mt-0.5 shrink-0">✓</span><span>Drafts prêts : brief A4 Mairie PV, talking points FULLIQUET, message René Marre.</span></li>
+        </ul>
+      </div>
+
+      <div class="md:border-l md:border-slate-300 md:pl-6">
+        <h3 class="text-sm font-semibold text-amber-700 uppercase tracking-wide mb-3 flex items-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          En attente / à venir
+        </h3>
+        <ul class="space-y-2 text-sm text-slate-700">
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Felipe envoie ses choix perks → rédiger annexe → renvoyer convention → recevoir signée.</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Coller brief A4 Mairie dans Claude.ai (autre fil) pour production du .docx.</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Envoyer message à René Marre (recontact advisor informel).</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Pitcher FULLIQUET cette semaine (cet après-midi ou demain idéal).</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Visite Vin d'Auteur Collioure — jeudi 21 ou vendredi 22 mai.</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Permanence Maire de Port-Vendres — samedi 24 mai matin.</span></li>
+          <li class="flex gap-2"><span class="text-amber-600 mt-0.5 shrink-0">○</span><span>Commander Mac mini M4 reconditionné (589 €).</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- B. PIPELINE PATRONS & PERKS -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Pipeline patrons & perks · KPI principal</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-green-500">
+      <p class="text-sm text-slate-500 font-medium">Patrons signés</p>
+      <div class="flex items-baseline gap-2 mt-2">
+        <span class="text-4xl font-bold text-green-600">1</span>
+        <span class="text-slate-400 text-sm">/ 10-15</span>
+      </div>
+      <div class="gauge-track h-2 rounded-full mt-3 overflow-hidden">
+        <div class="h-full bg-green-500" style="width: 8%"></div>
+      </div>
+      <p class="text-xs text-slate-600 mt-2"><span class="font-semibold text-green-700">SIGNÉ</span> — Felipe SOARES BRANDÃO, 4 lieux Collioure (procédure B en cours)</p>
+    </div>
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-amber-400">
+      <p class="text-sm text-slate-500 font-medium">Perks actifs</p>
+      <div class="flex items-baseline gap-2 mt-2">
+        <span class="text-4xl font-bold text-amber-600">4</span>
+        <span class="text-slate-400 text-sm">/ 20+</span>
+      </div>
+      <div class="gauge-track h-2 rounded-full mt-3 overflow-hidden">
+        <div class="h-full bg-amber-400" style="width: 20%"></div>
+      </div>
+      <p class="text-xs text-slate-600 mt-2"><span class="font-semibold text-amber-700">Minimum attendu</span> — 1 perk × 4 établissements Felipe, choix définitif en attente</p>
+    </div>
+    <div class="bg-red-50 border-2 border-red-200 rounded-lg p-5">
+      <p class="text-sm text-red-700 font-semibold uppercase tracking-wide">Seuil ouverture pros</p>
+      <p class="text-2xl font-bold text-red-900 mt-2">Non atteint</p>
+      <p class="text-sm text-red-800 mt-2 font-medium">Silence radio côté pros · zéro communication tant que 10-15 patrons + 20 perks pas signés</p>
+    </div>
+  </div>
+</section>
+
+<!-- C. CHANTIERS ACTIFS -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Chantiers actifs</h2>
+
+  <div class="bg-indigo-50 border-2 border-indigo-300 rounded-lg px-5 py-3 mb-4 text-sm text-indigo-900">
+    <span class="font-semibold uppercase tracking-wide text-xs">Sprint en cours ·</span>
+    Plan 10 jours du 19 au 28 mai 2026 — 4 fronts (patrons, institutionnel, code, pilotage) + migration Mac mini. Discipline anti-fragmentation : 1 session = 1 front. Référence : <code class="font-mono text-xs bg-indigo-100 px-1 py-0.5 rounded">project_plan_10jours_19_28_mai.md</code>.
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-green-600">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">1. Partenariat Felipe SOARES BRANDÃO</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-800 whitespace-nowrap">✅ SIGNÉ · PROCÉDURE B</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Accord définitif au café 19 mai 10h. Felipe a opté pour la procédure B (asynchrone) plutôt qu'une signature live. 4 établissements à Collioure : Templiers · Boqueria · Aquarelle · Rôtisserie Rue Pasteur.</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> attendre choix perks Felipe (WhatsApp). Relance polie si rien après 3-4 jours (jeu 22 ou ven 23 mai).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Sous-checklist procédure B :</span> ⏳ choix perks · rédiger annexe · renvoyer convention · recevoir signée · message remerciement · kit physique (8 supports).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Fiche dédiée :</span> <code class="path">project_partenaire_felipe.md</code></p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-amber-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">2. Pitch Mairie Port-Vendres</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-amber-100 text-amber-700 whitespace-nowrap">ACTIF · SAM 24 MAI</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Permanence samedi 24 mai matin (9h-10h30). Argumentaire : partenaires fondateurs signés (Felipe + FULLIQUET si OK). Pas de mention UMIH (règle dure).</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> faire produire un A4 institutionnel spécifique par l'autre fil cette semaine (intégrant les fondateurs signés).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">A4 v1 disponible :</span> <code class="path">A4_Maire_PortVendres_v1.docx</code> (12 mai)</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-amber-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">3. Code V1 — à clarifier</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-amber-100 text-amber-700 whitespace-nowrap">⚠ S2 ≠ S3 ?</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2"><strong>S2 déjà bouclée</strong> : commit b70bb31 du 15 mai, table users + page /test OK. Le user mentionne "reprise S2" — possible confusion avec S3 (inscription pro + magic link).</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> Alfy demande au user (a) re-tester S2 ou (b) attaquer S3 ? + intégrer 2 rajouts différés (region multi-tenant + CLI migrations).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Fenêtre cible :</span> mardi PM ou jeudi matin cette semaine.</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-green-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">4. Animation Cowork</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-green-100 text-green-700 whitespace-nowrap">À JOUR</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Briefing lundi 9h, bilan vendredi 13h, veilles trimestrielle (août/nov) et semestrielle (juin/déc) actives.</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> activer "Tour patrons à signer" (1er du mois 14h) — création échouée hier, à retenter.</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Dormantes :</span> Newsletter (5+ patrons), Check inscriptions (post-seuil), 3 tâches V2.</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-orange-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">5. Pitch FULLIQUET — "Les 3 F"</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700 whitespace-nowrap">À POUSSER · CETTE SEMAINE</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Franck &amp; Florence FULLIQUET — <strong>5 établissements</strong> : Casa Catalane · Jardin Collioure · Jardin Canet · Côte à l'Os · Café Sola. Relation pré-existante (viennent aux événements DMN).</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> pitch cette semaine, format au moment du contact. Ouvrir avec la phrase verbatim Felipe (cf. <code class="path">project_pitch_verbal_post_felipe.md</code>).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Cadre :</span> "Felipe signé, 4 lieux Collioure. Je signe les 10-15 fondateurs maintenant."</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-slate-400">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">6. Migration hardware — Mac mini M4</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-700 whitespace-nowrap">EN COURS</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Achat Mac mini M4 reconditionné Apple 589 € cette semaine. Bascule prévue dans 7-10 jours.</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Impératif AVANT migration :</span> sauvegarde complète de <code class="path">C:\Users\User\Documents\DMN-PRO</code> sur Google Drive (incl. <code>.env.local</code> non couvert par GitHub).</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Justification :</span> doc n°9 — la machine ne joue aucun rôle dans le scale, simple outil fiabilité.</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-orange-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">7. Pitch Vin d'Auteur Collioure</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700 whitespace-nowrap">À POUSSER · JEU/VEN</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Caviste, patron unique à Collioure. Relation superficielle à construire au pitch. Voisinage local avec Felipe = effet domino possible.</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> visite physique décontractée jeudi 21 ou vendredi 22 mai, hors affluence.</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Cadre :</span> ouvrir avec phrase verbatim Felipe (cf. <code class="path">project_pitch_verbal_post_felipe.md</code>).</p>
+    </div>
+
+    <div class="bg-white rounded-lg border border-slate-200 p-5 border-l-4 border-l-orange-500">
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="font-semibold text-slate-900">8. Activation René Marre — advisor informel</h3>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700 whitespace-nowrap">À RECONTACTER · CETTE SEM.</span>
+      </div>
+      <p class="text-sm text-slate-600 mt-2">Recontact pour caler un cadre advisor informel régulier, maintenant que Felipe est signé. Format : appel ou visio 30-45 min.</p>
+      <p class="text-xs text-slate-500 mt-3"><span class="font-semibold">Prochaine action :</span> message de recontact cette semaine, proposer un créneau dispo.</p>
+      <p class="text-xs text-slate-500 mt-1"><span class="font-semibold">Docs à partager APRÈS l'échange (si cadre OK) :</span> étude marché (doc 1) + BMC v3 (doc 3) + stratégie scale (doc 9). Pas avant.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- D + E : ROADMAP + CALENDRIER INSTITUTIONNEL -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+<!-- D. ROADMAP TECHNIQUE -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Roadmap technique V1</h2>
+  <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
+    <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+      <span class="text-sm text-slate-500">Total : 22-28h sur 9 sessions</span>
+      <span class="text-sm font-semibold navy-text">~3h faites · 22-28h restantes</span>
+    </div>
+    <ul class="divide-y divide-slate-100">
+      <li class="px-5 py-3 flex items-center justify-between bg-green-50">
+        <div>
+          <div class="font-medium text-slate-900">S1 · Scaffold Next.js + Tailwind + TS</div>
+          <div class="text-xs text-slate-500">~3h · 4 commits</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-green-200 text-green-800">DONE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between bg-amber-50">
+        <div>
+          <div class="font-medium text-slate-900">S2 · Connexion Supabase + table users</div>
+          <div class="text-xs text-slate-500">2-3h</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-amber-200 text-amber-800">NEXT</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S3 · Module 1 — Inscription pro + magic link</div>
+          <div class="text-xs text-slate-500">3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S4 · Module 1 — Parrainage + validation admin</div>
+          <div class="text-xs text-slate-500">2-3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S5 · Module 2 — Tables établissements + perks</div>
+          <div class="text-xs text-slate-500">3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S6 · Module 2 — Fiche établissement + carte</div>
+          <div class="text-xs text-slate-500">2-3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S7 · Module 3 — Activation perk + code</div>
+          <div class="text-xs text-slate-500">3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S8 · Module 4 — Espace patron partenaire</div>
+          <div class="text-xs text-slate-500">2-3h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S9 · Module 5 — Dashboard admin porteur</div>
+          <div class="text-xs text-slate-500">2h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+      <li class="px-5 py-3 flex items-center justify-between">
+        <div>
+          <div class="font-medium text-slate-700">S10 · Finition + PWA + tests</div>
+          <div class="text-xs text-slate-500">3-4h</div>
+        </div>
+        <span class="text-xs text-slate-400">À venir</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- E. CALENDRIER INSTITUTIONNEL -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Calendrier institutionnel</h2>
+  <div class="bg-amber-50 border-2 border-amber-300 rounded-lg px-5 py-3 mb-3 text-sm text-amber-900">
+    <span class="font-semibold uppercase tracking-wide text-xs">Règle dure ·</span> Ne JAMAIS croiser Mairie Collioure et UMIH 66 (Brice Sannac) dans un pitch, livrable, événement ou comm. Détails opérationnels dans <code class="font-mono text-xs bg-amber-100 px-1 py-0.5 rounded">project_confidentiel_collioure_umih.md</code>.
+  </div>
+  <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
+    <div class="px-5 py-4 border-b border-slate-100">
+      <span class="text-sm text-slate-500">Séquence accélérée — objectif : dossier institutionnel solide avant fin juin 2026</span>
+    </div>
+    <ol class="divide-y divide-slate-100">
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">01</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Mairie PV / CC ACVI</div>
+          <div class="text-xs text-slate-500">Samedi mairie · A4 prêt · double validation commune + 15 communes</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-orange-100 text-orange-700">À PITCHER</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">02</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Maire Collioure</div>
+          <div class="text-xs text-slate-500">Via Templiers · après accord PV · nom Collioure = démultiplicateur</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">03</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">UMIH 66 · Brice Sannac</div>
+          <div class="text-xs text-slate-500">Hôtelier Banyuls + Collioure · pas de financement direct 1er contact</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">04</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">MTS 66</div>
+          <div class="text-xs text-slate-500">07 87 63 31 33 · permanences Mardis de l'Emploi 4 juil-12 sept</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">05</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Mairies Banyuls + Argelès, ACAL, CCI 66, OT</div>
+          <div class="text-xs text-slate-500">Élargissement territorial · mois 3-4</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">06</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Région Occitanie</div>
+          <div class="text-xs text-slate-500">Subvention cible 5-30k€ · délai 3-6 mois · mois 5-9</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">07</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Action Logement</div>
+          <div class="text-xs text-slate-500">Visale · LOCA-PASS · mois 5-9</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+      <li class="px-5 py-3 flex items-center gap-3">
+        <span class="font-mono text-sm text-slate-400 w-6">08</span>
+        <div class="flex-1">
+          <div class="font-medium text-slate-900">Campus Banyuls + Purple Perpignan</div>
+          <div class="text-xs text-slate-500">V3 recrutement · mois 12+ · 30 min en promo + cartes invitation</div>
+        </div>
+        <span class="text-xs font-semibold px-2 py-1 rounded bg-slate-100 text-slate-600">EN ATTENTE</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+</div>
+
+<!-- F. CAP HORAIRE -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Cap horaire & cadence</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-white rounded-lg border border-slate-200 p-5">
+      <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Saison (avril-novembre)</p>
+      <p class="text-2xl font-bold navy-text mt-2">8-12h <span class="text-sm font-normal text-slate-500">/ sem</span></p>
+      <p class="text-xs text-slate-500 mt-2">Plage 9h-14h · Lundis off Templiers = journée pleine</p>
+    </div>
+    <div class="bg-white rounded-lg border border-slate-200 p-5">
+      <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Hors saison (nov-mars)</p>
+      <p class="text-2xl font-bold navy-text mt-2">20-25h <span class="text-sm font-normal text-slate-500">/ sem</span></p>
+      <p class="text-xs text-slate-500 mt-2">Créneaux à caler ensemble</p>
+    </div>
+    <div class="bg-white rounded-lg border border-slate-200 p-5">
+      <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Cadence Alfy</p>
+      <p class="text-base font-semibold text-slate-900 mt-2">Briefing lundi 9h · Bilan vendredi 13h</p>
+      <p class="text-xs text-slate-500 mt-2">Hors cadence : à la demande, pas intrusif</p>
+    </div>
+  </div>
+</section>
+
+<!-- G. DÉCISIONS ACTÉES -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Décisions actées — ne pas réouvrir</h2>
+  <div class="bg-slate-900 rounded-lg p-5 text-slate-100">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 text-sm">
+      <div><span class="navy-text font-semibold" style="color:#93C5FD">Scope V1</span> · perks uniquement, pas de logement/mobilité/emploi/events</div>
+      <div><span style="color:#93C5FD" class="font-semibold">Monétisation</span> · 100% gratuit pros + patrons V1 et V2</div>
+      <div><span style="color:#93C5FD" class="font-semibold">Géo</span> · Côte Vermeille V1 · Perpignan V2 · plus large V3+</div>
+      <div><span style="color:#93C5FD" class="font-semibold">Stack</span> · Next.js 16 + TS + Tailwind + Supabase + PWA</div>
+      <div><span style="color:#93C5FD" class="font-semibold">Acquisition</span> · patrons d'abord · silence radio pros sous le seuil</div>
+      <div><span style="color:#93C5FD" class="font-semibold">Animation</span> · fondateur-led · pas de forum/gamif/marketplace</div>
+      <div class="md:col-span-2 lg:col-span-3"><span style="color:#93C5FD" class="font-semibold">Jalon</span> · fin juillet 2026 auto-imposé · modulable ±3 sem · aucun engagement public</div>
+    </div>
+  </div>
+</section>
+
+<!-- H. RÈGLES NON-NÉGOCIABLES -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Règles non-négociables · cicatrices DMN passées</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="bg-white border-l-4 border-l-red-500 border border-slate-200 rounded-lg p-4">
+      <p class="text-sm font-semibold text-slate-900">Investissement irrécupérable</p>
+      <p class="text-xs text-slate-600 mt-1">Aucun invest dans un lieu non sécurisé par contrat écrit.</p>
+    </div>
+    <div class="bg-white border-l-4 border-l-red-500 border border-slate-200 rounded-lg p-4">
+      <p class="text-sm font-semibold text-slate-900">Économie unitaire</p>
+      <p class="text-xs text-slate-600 mt-1">Aucun événement sans économie unitaire vérifiée AVANT lancement.</p>
+    </div>
+    <div class="bg-white border-l-4 border-l-red-500 border border-slate-200 rounded-lg p-4">
+      <p class="text-sm font-semibold text-slate-900">Saisonnalité subie</p>
+      <p class="text-xs text-slate-600 mt-1">Pas de modèle qui s'effondre hors saison.</p>
+    </div>
+    <div class="bg-white border-l-4 border-l-red-500 border border-slate-200 rounded-lg p-4">
+      <p class="text-sm font-semibold text-slate-900">Cap horaire personnel</p>
+      <p class="text-xs text-slate-600 mt-1">DMN Pro ne saigne pas Buy & Build, et vice-versa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- I. DOCUMENTS DE RÉFÉRENCE -->
+<section>
+  <h2 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Documents de référence</h2>
+
+  <details class="bg-white rounded-lg border border-slate-200 mb-3" open>
+    <summary class="px-5 py-3 flex items-center gap-2 font-semibold text-slate-900">
+      <span class="chevron text-slate-400">▶</span>
+      7 docs canoniques
+    </summary>
+    <ul class="divide-y divide-slate-100 border-t border-slate-100">
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°1</span> · Étude marché · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Etude_Marche_DMN_App_Pros_CHR_Cote_Vermeille.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°2</span> · Étude contexte éco/géopolitique 2026 · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Etude_Contexte_Eco_Geopolitique_2026_DMN.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°3</span> · BMC v3 + Specs V1 Perks · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\BMC_v3_et_Specs_V1_DMN_Perks.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°4</span> · Benchmark concurrentiel UX · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Benchmark_Concurrentiel_UX_DMN_Pro.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°5</span> · Stratégie animation + roadmap éditoriale · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Strategie_Animation_Roadmap_Editoriale_DMN_Pro.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°6</span> · Partenariats institutionnels v2 · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Partenariats_Institutionnels_DMN_Pro_v2.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">Fiche acquisition</span> · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Fiche_Acquisition_DMN_Pro.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°8</span> · Segmentation utilisateurs · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Segmentation_Utilisateurs_DMN_Pro.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">doc n°9</span> · Stratégie scale infrastructure · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Strategie_Scale_Infrastructure_DMN_Pro.docx</code></li>
+    </ul>
+  </details>
+
+  <details class="bg-white rounded-lg border border-slate-200 mb-3">
+    <summary class="px-5 py-3 flex items-center gap-2 font-semibold text-slate-900">
+      <span class="chevron text-slate-400">▶</span>
+      Annexes livrables (supports terrain)
+    </summary>
+    <ul class="divide-y divide-slate-100 border-t border-slate-100">
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">A4 Pitch Templiers v1</span> (archive) · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\DMN_Pro_Partenariat_Templiers.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">A4 Pitch Mairie PV v1</span> · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\A4_Maire_PortVendres_v1.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">A4 v2 Felipe</span> · uploadé · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\A4_v2_DMN_Pro_Felipe.docx</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">Convention Partenaire Fondateur Felipe</span> · uploadée · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\Convention_Partenaire_Fondateur_DMN_Pro_Felipe.docx</code></li>
+    </ul>
+  </details>
+
+  <details class="bg-white rounded-lg border border-slate-200">
+    <summary class="px-5 py-3 flex items-center gap-2 font-semibold text-slate-900">
+      <span class="chevron text-slate-400">▶</span>
+      Veilles concurrentielles
+    </summary>
+    <ul class="divide-y divide-slate-100 border-t border-slate-100">
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">Trimestrielle mai 2026</span> · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\veille_trimestrielle_2026-05.md</code></li>
+      <li class="px-5 py-2.5"><span class="font-medium text-slate-700">Semestrielle mai 2026</span> · <code class="path">E:\DMN\DMN Pro — App pros CHR Côte Vermeille\veille_semestrielle_2026-05.md</code></li>
+    </ul>
+  </details>
+</section>
+
+</main>
+
+<footer class="max-w-7xl mx-auto px-6 py-6 text-xs text-slate-400 border-t border-slate-200 mt-8">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+    <span>DMN Pro · Association Dessine Ma Nuit · Loi 1901 · Port-Vendres</span>
+    <span>Dashboard généré le 19 mai 2026 · Felipe signé · 8 chantiers actifs</span>
+  </div>
+</footer>
+
+</body>
+</html>
