@@ -699,6 +699,105 @@
     .collapsible { page-break-inside: avoid; }
     .stat-card:hover, .grid-card:hover { transform: none; box-shadow: none; }
   }
+
+  /* ===== BLOC MAQUETTES APP ===== */
+  .mockups-block {
+    margin: 40px 0 24px;
+    padding: 44px 28px;
+    background: linear-gradient(135deg, #1B2F4A 0%, #142338 100%);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mockups-block::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(200,160,90,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .mockups-heading { text-align: center; margin-bottom: 36px; position: relative; }
+  .mockups-heading .mh-tag {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #E0C896; margin-bottom: 8px;
+  }
+  .mockups-heading h4 { font-size: 26px; font-weight: 700; color: white; letter-spacing: -0.5px; }
+  .phones-row { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; position: relative; }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .phone-label { color: white; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+  .phone-label .pl-num {
+    width: 24px; height: 24px; background: #C8A05A; color: #1B2F4A;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .phone-label .pl-desc { font-weight: 400; color: rgba(255,255,255,0.7); font-size: 13px; }
+  .miniphone {
+    width: 270px; height: 580px; background: #F7F4ED;
+    border-radius: 32px; border: 9px solid #0A0A0C;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4); overflow: hidden;
+    position: relative; display: flex; flex-direction: column;
+  }
+  .mininotch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 22px; background: #0A0A0C; border-radius: 0 0 14px 14px; z-index: 50;
+  }
+  .mp-status { padding: 10px 20px 4px; display: flex; justify-content: space-between; font-size: 10px; font-weight: 600; color: #1B2F4A; }
+  .mp-header { padding: 4px 16px 11px; border-bottom: 1px solid #E8E3D8; }
+  .mp-htop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .mp-logo { font-weight: 700; font-size: 15px; color: #1B2F4A; display: flex; align-items: center; gap: 5px; }
+  .mp-mark { width: 22px; height: 22px; background: #1B2F4A; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #C8A05A; font-size: 11px; font-weight: 700; }
+  .mp-icons { display: flex; gap: 7px; }
+  .mp-ico { width: 26px; height: 26px; border-radius: 50%; background: #FFF; border: 1px solid #E8E3D8; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .mp-title { font-size: 21px; font-weight: 700; color: #1B2F4A; line-height: 1; }
+  .mp-sub { font-size: 10px; color: #8896A5; margin-top: 3px; }
+  .mp-chips { display: flex; gap: 5px; padding: 9px 16px; overflow: hidden; }
+  .mp-chip { flex-shrink: 0; padding: 5px 10px; border-radius: 14px; font-size: 9px; font-weight: 500; background: #FFF; border: 1px solid #E8E3D8; color: #222A33; white-space: nowrap; }
+  .mp-chip.on { background: #1B2F4A; color: white; border-color: #1B2F4A; }
+  .mp-feed { flex: 1; overflow: hidden; padding: 4px 13px; }
+  .mp-seclabel { font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #C8A05A; margin: 10px 2px 7px; }
+  .mp-card { background: #FFF; border-radius: 13px; margin-bottom: 9px; overflow: hidden; box-shadow: 0 3px 12px rgba(27,47,74,0.06); border: 1px solid rgba(232,227,216,0.8); }
+  .mp-visual { height: 64px; position: relative; display: flex; align-items: flex-end; padding: 8px; }
+  .mpv-wine { background: linear-gradient(135deg, #6B2C3E, #3D1825); }
+  .mpv-soir { background: linear-gradient(135deg, #34406B, #1B2547); }
+  .mp-vico { position: absolute; top: 8px; right: 10px; font-size: 18px; opacity: 0.9; }
+  .mp-badge { background: rgba(255,255,255,0.95); color: #1B2F4A; font-size: 8px; font-weight: 700; padding: 3px 7px; border-radius: 8px; z-index: 2; }
+  .mp-cbody { padding: 8px 11px 10px; }
+  .mp-ctype { font-size: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #8B3A52; margin-bottom: 3px; }
+  .mp-ctype.soir { color: #1B2F4A; }
+  .mp-ctitle { font-size: 13px; font-weight: 600; color: #222A33; line-height: 1.2; margin-bottom: 6px; }
+  .mp-cmeta { font-size: 9px; color: #8896A5; }
+  .mp-inst { display: flex; background: #FFF; border-radius: 11px; margin-bottom: 9px; overflow: hidden; border: 1px solid #E8E3D8; }
+  .mp-inststripe { width: 4px; background: #C8A05A; }
+  .mp-instbody { padding: 8px 10px; }
+  .mp-insttag { font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #C8A05A; margin-bottom: 3px; }
+  .mp-insttitle { font-size: 10px; font-weight: 600; color: #222A33; line-height: 1.3; }
+  .mp-quota { margin: 9px 16px 0; background: linear-gradient(120deg, #1B2F4A, #142338); border-radius: 12px; padding: 9px 11px; display: flex; align-items: center; gap: 9px; }
+  .mp-qring { width: 32px; height: 32px; border-radius: 50%; background: conic-gradient(#C8A05A 0% 70%, rgba(255,255,255,0.15) 70%); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .mp-qring span { width: 25px; height: 25px; background: #1B2F4A; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 9px; font-weight: 700; }
+  .mp-qtext .qm { font-size: 10px; font-weight: 600; color: white; }
+  .mp-qtext .qs { font-size: 8px; color: rgba(255,255,255,0.7); margin-top: 1px; }
+  .mp-perk { background: #FFF; border-radius: 13px; margin-bottom: 8px; overflow: hidden; box-shadow: 0 3px 12px rgba(27,47,74,0.06); border: 1px solid rgba(232,227,216,0.8); }
+  .mp-founder { background: linear-gradient(90deg, rgba(200,160,90,0.16), rgba(200,160,90,0.04)); padding: 3px 11px; font-size: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #C8A05A; }
+  .mp-ptop { display: flex; padding: 10px 11px 8px; gap: 9px; }
+  .mp-plogo { width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 17px; color: white; }
+  .mpl1 { background: linear-gradient(135deg, #6B2C3E, #3D1825); }
+  .mpl2 { background: linear-gradient(135deg, #34406B, #1B2547); }
+  .mp-pinfo { flex: 1; min-width: 0; }
+  .mp-pvenue { font-size: 8px; color: #8896A5; font-weight: 500; margin-bottom: 2px; }
+  .mp-pname { font-size: 12px; font-weight: 600; color: #222A33; line-height: 1.2; }
+  .mp-pfoot { display: flex; align-items: center; justify-content: space-between; padding: 0 11px 11px; }
+  .mp-ptags { display: flex; gap: 4px; }
+  .mp-ptag { font-size: 8px; font-weight: 600; padding: 3px 6px; border-radius: 7px; background: #F7F4ED; color: #1B2F4A; }
+  .mp-activate { background: #C8A05A; color: #1B2F4A; font-weight: 700; font-size: 9px; padding: 6px 12px; border-radius: 15px; border: none; }
+  .mp-nav { border-top: 1px solid #E8E3D8; display: flex; justify-content: space-around; padding: 7px 0 14px; background: #FFF; }
+  .mp-navitem { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 7px; font-weight: 500; color: #8896A5; }
+  .mp-navitem .ni { font-size: 15px; }
+  .mp-navitem.on { color: #1B2F4A; }
+  .mockup-caption { text-align: center; color: rgba(255,255,255,0.65); font-size: 13px; margin-top: 32px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; position: relative; }
+  @media (max-width: 1024px) {
+    .mockups-block { padding: 32px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -1092,6 +1191,141 @@
       </div>
     </div>
     
+    <!-- BLOC MAQUETTES -->
+    <div class="mockups-block">
+      <div class="mockups-heading">
+        <div class="mh-tag">Aperçu de l'application</div>
+        <h4>Les deux écrans au cœur de l'expérience</h4>
+      </div>
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone-label"><span class="pl-num">1</span> Actualités <span class="pl-desc">— l'écran d'accueil</span></div>
+          <div class="miniphone">
+            <div class="mininotch"></div>
+            <div class="mp-status"><span>9:41</span><span>📶 🔋</span></div>
+            <div class="mp-header">
+              <div class="mp-htop">
+                <div class="mp-logo"><span class="mp-mark">D</span> DMN Pro</div>
+                <div class="mp-icons"><span class="mp-ico">🔍</span><span class="mp-ico">🔔</span></div>
+              </div>
+              <div class="mp-title">Ça se passe ici</div>
+              <div class="mp-sub">Côte Vermeille · cette semaine</div>
+            </div>
+            <div class="mp-chips">
+              <span class="mp-chip on">Tout</span>
+              <span class="mp-chip">📍 Près de moi</span>
+              <span class="mp-chip">🍷 Déguster</span>
+            </div>
+            <div class="mp-feed">
+              <div class="mp-seclabel">À venir cette semaine</div>
+              <div class="mp-card">
+                <div class="mp-visual mpv-wine">
+                  <span class="mp-vico">🍷</span>
+                  <span class="mp-badge">📍 Collioure</span>
+                </div>
+                <div class="mp-cbody">
+                  <div class="mp-ctype">Dégustation · entre pros</div>
+                  <div class="mp-ctitle">Vignes en Fleur — nouveaux millésimes</div>
+                  <div class="mp-cmeta">📅 Ven. 6 juin · 18h30</div>
+                </div>
+              </div>
+              <div class="mp-inst">
+                <div class="mp-inststripe"></div>
+                <div class="mp-instbody">
+                  <div class="mp-insttag">🏛️ Mairie de Port-Vendres</div>
+                  <div class="mp-insttitle">Permanences logement saisonniers étendues</div>
+                </div>
+              </div>
+              <div class="mp-card">
+                <div class="mp-visual mpv-soir">
+                  <span class="mp-vico">🌙</span>
+                  <span class="mp-badge">📍 Collioure</span>
+                </div>
+                <div class="mp-cbody">
+                  <div class="mp-ctype soir">Soirée · La Boqueria</div>
+                  <div class="mp-ctitle">Tapas & guitare espagnole</div>
+                  <div class="mp-cmeta">📅 Jeu. 5 juin · 20h00</div>
+                </div>
+              </div>
+            </div>
+            <div class="mp-nav">
+              <div class="mp-navitem on"><span class="ni">📰</span>Actus</div>
+              <div class="mp-navitem"><span class="ni">🎁</span>Avantages</div>
+              <div class="mp-navitem"><span class="ni">🗺️</span>Carte</div>
+              <div class="mp-navitem"><span class="ni">👤</span>Profil</div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-label"><span class="pl-num">2</span> Avantages <span class="pl-desc">— les perks entre confrères</span></div>
+          <div class="miniphone">
+            <div class="mininotch"></div>
+            <div class="mp-status"><span>9:41</span><span>📶 🔋</span></div>
+            <div class="mp-header">
+              <div class="mp-htop">
+                <div class="mp-logo"><span class="mp-mark">D</span> DMN Pro</div>
+                <div class="mp-icons"><span class="mp-ico">🔍</span><span class="mp-ico">🔖</span></div>
+              </div>
+              <div class="mp-title">Avantages</div>
+              <div class="mp-sub">Entre confrères · Côte Vermeille</div>
+            </div>
+            <div class="mp-quota">
+              <div class="mp-qring"><span>21</span></div>
+              <div class="mp-qtext">
+                <div class="qm">21 avantages ce mois-ci</div>
+                <div class="qs">1 / jour · max 30 / mois</div>
+              </div>
+            </div>
+            <div class="mp-chips" style="padding-top:9px;">
+              <span class="mp-chip on">Tout</span>
+              <span class="mp-chip">📍 Près de moi</span>
+              <span class="mp-chip">🍷 Cave</span>
+            </div>
+            <div class="mp-feed">
+              <div class="mp-seclabel">À deux pas</div>
+              <div class="mp-perk">
+                <div class="mp-founder">⭐ Partenaire fondateur</div>
+                <div class="mp-ptop">
+                  <div class="mp-plogo mpl1">🍷</div>
+                  <div class="mp-pinfo">
+                    <div class="mp-pvenue">📍 La Boqueria · 180 m</div>
+                    <div class="mp-pname">Un verre offert</div>
+                  </div>
+                </div>
+                <div class="mp-pfoot">
+                  <div class="mp-ptags"><span class="mp-ptag">Bar à vin</span></div>
+                  <button class="mp-activate">Activer ⚡</button>
+                </div>
+              </div>
+              <div class="mp-perk">
+                <div class="mp-founder">⭐ Partenaire fondateur</div>
+                <div class="mp-ptop">
+                  <div class="mp-plogo mpl2">🍽️</div>
+                  <div class="mp-pinfo">
+                    <div class="mp-pvenue">📍 Les Templiers · 220 m</div>
+                    <div class="mp-pname">Café gourmand offert</div>
+                  </div>
+                </div>
+                <div class="mp-pfoot">
+                  <div class="mp-ptags"><span class="mp-ptag">Restaurant</span></div>
+                  <button class="mp-activate">Activer ⚡</button>
+                </div>
+              </div>
+            </div>
+            <div class="mp-nav">
+              <div class="mp-navitem"><span class="ni">📰</span>Actus</div>
+              <div class="mp-navitem on"><span class="ni">🎁</span>Avantages</div>
+              <div class="mp-navitem"><span class="ni">🗺️</span>Carte</div>
+              <div class="mp-navitem"><span class="ni">👤</span>Profil</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-caption">
+        À gauche, l'écran <strong>Actualités</strong> accueille le professionnel et fédère la communauté autour de la vie locale du milieu. À droite, l'écran <strong>Avantages</strong> présente les perks entre confrères, avec un quota personnel transparent. Aperçu d'illustration — le design final sera affiné au développement.
+      </div>
+    </div>
+    
     <h3>Le parcours du patron partenaire</h3>
     <p>Le patron d'établissement (restaurant, bar, cave, hôtel) dispose de son propre espace pour gérer sa participation.</p>
     
@@ -1116,6 +1350,84 @@
         <div class="collapsible-content">
           En échange, le partenaire gagne une visibilité directe auprès de l'ensemble du vivier professionnel local. Pour un caviste par exemple, un sommelier qui découvre sa sélection peut ensuite référencer ses vins dans la carte de son restaurant : c'est de la prescription qualifiée. Pour un restaurant, c'est une clientèle de confrères qui devient ambassadrice toute l'année.
         </div>
+      </div>
+    </div>
+    
+    <!-- BLOC MAQUETTE PATRON -->
+    <div class="mockups-block" style="padding-top:38px;">
+      <div class="mockups-heading">
+        <div class="mh-tag">Aperçu de l'application</div>
+        <h4>L'espace de pilotage du partenaire</h4>
+      </div>
+      <div class="phones-row">
+        <div class="phone-wrap">
+          <div class="phone-label"><span class="pl-num">3</span> Espace patron <span class="pl-desc">— tableau de bord multi-établissements</span></div>
+          <div class="miniphone">
+            <div class="mininotch"></div>
+            <div class="mp-status"><span>9:41</span><span>📶 🔋</span></div>
+            <div style="background:linear-gradient(135deg,#1B2F4A,#142338); padding:4px 16px 15px; position:relative;">
+              <div class="mp-htop" style="padding-top:6px;">
+                <div class="mp-logo" style="color:white;"><span class="mp-mark" style="background:#C8A05A;color:#1B2F4A;">D</span> DMN Pro</div>
+                <div style="width:24px;height:24px;border-radius:50%;background:#C8A05A;display:flex;align-items:center;justify-content:center;color:#1B2F4A;font-weight:700;font-size:11px;">F</div>
+              </div>
+              <div style="color:rgba(255,255,255,0.7);font-size:10px;margin-bottom:2px;">Bonjour Felipe 👋</div>
+              <div style="font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:white;line-height:1.1;">Maison SOARES BRANDÃO</div>
+            </div>
+            <div class="mp-chips" style="margin-top:-6px;">
+              <span class="mp-chip on">Tous (4)</span>
+              <span class="mp-chip">Templiers</span>
+              <span class="mp-chip">Boqueria</span>
+            </div>
+            <div class="mp-feed">
+              <div style="display:flex;gap:7px;margin-bottom:8px;">
+                <div style="flex:1;background:white;border-radius:11px;padding:10px;border:1px solid rgba(232,227,216,0.8);">
+                  <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:#1B2F4A;line-height:1;">142</div>
+                  <div style="font-size:8px;color:#8896A5;margin-top:3px;">activations ce mois</div>
+                  <div style="font-size:7px;color:#4B9460;font-weight:600;margin-top:2px;">↗ +23%</div>
+                </div>
+                <div style="flex:1;background:white;border-radius:11px;padding:10px;border:1px solid rgba(232,227,216,0.8);">
+                  <div style="font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:#1B2F4A;line-height:1;">87</div>
+                  <div style="font-size:8px;color:#8896A5;margin-top:3px;">pros venus</div>
+                  <div style="font-size:7px;color:#4B9460;font-weight:600;margin-top:2px;">↗ +12</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:8px;margin:10px 0;">
+                <div style="flex:1;background:#C8A05A;color:#1B2F4A;border-radius:11px;padding:10px;text-align:center;font-size:9px;font-weight:600;">＋ Nouveau perk</div>
+                <div style="flex:1;background:white;color:#1B2F4A;border:1px solid #E8E3D8;border-radius:11px;padding:10px;text-align:center;font-size:9px;font-weight:600;">📣 Publier event</div>
+              </div>
+              <div class="mp-seclabel">Vos avantages actifs</div>
+              <div style="background:white;border-radius:12px;padding:11px;margin-bottom:8px;border:1px solid rgba(232,227,216,0.8);">
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <div class="mp-plogo mpl2" style="width:32px;height:32px;font-size:15px;">🍽️</div>
+                  <div style="flex:1;">
+                    <div style="font-size:8px;color:#8896A5;">Les Templiers</div>
+                    <div style="font-size:11px;font-weight:600;color:#222A33;">Café gourmand offert</div>
+                  </div>
+                  <div style="width:34px;height:20px;background:#4B9460;border-radius:11px;position:relative;"><span style="position:absolute;top:2px;right:2px;width:16px;height:16px;background:white;border-radius:50%;"></span></div>
+                </div>
+              </div>
+              <div style="background:white;border-radius:12px;padding:11px;border:1px solid rgba(232,227,216,0.8);">
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <div class="mp-plogo mpl1" style="width:32px;height:32px;font-size:15px;">🍷</div>
+                  <div style="flex:1;">
+                    <div style="font-size:8px;color:#8896A5;">La Boqueria</div>
+                    <div style="font-size:11px;font-weight:600;color:#222A33;">Un verre offert</div>
+                  </div>
+                  <div style="width:34px;height:20px;background:#4B9460;border-radius:11px;position:relative;"><span style="position:absolute;top:2px;right:2px;width:16px;height:16px;background:white;border-radius:50%;"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mp-nav">
+              <div class="mp-navitem on"><span class="ni">📊</span>Tableau</div>
+              <div class="mp-navitem"><span class="ni">🎁</span>Perks</div>
+              <div class="mp-navitem"><span class="ni">📣</span>Publier</div>
+              <div class="mp-navitem"><span class="ni">⚙️</span>Réglages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mockup-caption">
+        Le partenaire pilote tous ses établissements depuis un seul compte. Il contrôle ses perks (activer ou suspendre d'un geste), suit ses statistiques et qui fréquente ses lieux, et publie ses événements dans le fil Actualités. Contrôle total, à tout moment — une réponse directe à la crainte de perdre la main. Aperçu d'illustration.
       </div>
     </div>
     
